@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            empty-cells: show;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 10px 20px;
+
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-content: center; */
+            text-align: center;
+        }
+
+
+        thead {
+            background-color: rgb(182, 182, 182);
+        }
+
+
+
+        td {
+            position: relative;
+        }
+
+
+
+        .tablita {
+            display: grid;
+            justify-items: center;
+        }
+
+
+        .agregar-libros {
+            display: grid;
+            justify-items: center;
+
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .fila {
+            display: grid;
+
+            grid-template-columns: 150px 185px;
+
+            gap: 12px;
+
+
+
+        }
+
+
+        .fila>label {
+            justify-self: right;
+        }
+
+
+        .fila>input[type="checkbox"] {
+            justify-self: left;
+            margin: 0px;
+        }
+
+        .delete-btn {
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: -40px;
+            top: 12px;
+        }
+
+
+        .fila:last-child>button {
+            grid-column: 1/-1;
+            width: max(20%, 70px);
+            place-self: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <form class="agregar-libros" action="/">
+        <div class="fila">
+            <label for="bookName">Nombre del libro:</label>
+            <input id="bookName" type="text">
+        </div>
+        <div class="fila">
+            <label for="authorName">Nombre del autor:</label>
+            <input id="authorName" type="text">
+        </div>
+        <div class="fila">
+            <label for="pages">Número de páginas:</label>
+            <input id="pages" type="text">
+        </div>
+        <div class="fila">
+            <label for="read">Leído:</label>
+            <input id="read" type="checkbox">
+        </div>
+        <div class="fila">
+            <button type="button">Agregar</button>
+        </div>
+    </form>
+
+    <div class="tablita">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del libro</th>
+                    <th>Nombre del Autor</th>
+                    <th>Número de paginas</th>
+                    <th>Leído</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
