@@ -96,31 +96,71 @@
             width: max(20%, 70px);
             place-self: center;
         }
+
+        .fila{
+            position: relative;
+        }
+        .error-submit{
+            position: absolute;
+            right:0px;
+
+        }
+
+        .hidden{
+            display:none;
+        }
+
+
+        .invalid{
+            border:1px solid red;
+            border-radius: 2px;
+        }
+
+        .invalid:focus{
+            outline: none;
+        }
+
+        .error-msg{
+            position: absolute;
+            right: -120px;
+            color:red;
+        }
+
+
+
+      
+
+        
+
     </style>
 </head>
 
 <body>
 
 
-    <form class="agregar-libros" action="/">
+    <form class="agregar-libros" action="/3" novalidate>
         <div class="fila">
             <label for="bookName">Nombre del libro:</label>
-            <input id="bookName" type="text">
+            <input id="bookName" type="text" required>
+            <div class="hidden error-msg"></div>
         </div>
         <div class="fila">
             <label for="authorName">Nombre del autor:</label>
-            <input id="authorName" type="text">
+            <input id="authorName" type="text" required>
+            <div class="hidden error-msg"></div>
         </div>
         <div class="fila">
             <label for="pages">Número de páginas:</label>
-            <input id="pages" type="text">
+            <input id="pages" type="text" required>
+            <div class="hidden error-msg"></div>
         </div>
         <div class="fila">
             <label for="read">Leído:</label>
             <input id="read" type="checkbox">
         </div>
         <div class="fila">
-            <button type="button">Agregar</button>
+            <button type="submit">Agregar</button>
+            <div class="error-submit hidden"></div>
         </div>
     </form>
 

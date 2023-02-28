@@ -127,12 +127,69 @@ function reloadLibrary() {
     });
 }
 
+
+function showErrorMessage(input){
+  if(input.validity.valueMissing){
+    input.classList.add('invalid');
+    let errorMsg = input.nextElementSibling;
+    errorMsg.classList.remove('hidden');
+    errorMsg.innerText = 'Valor faltante'
+
+  }
+
+}
+
+function clearErrorMessage(input){
+  input.classList.remove('invalid');
+  let errorMsg = input.nextElementSibling;
+  errorMsg.classList.add('hidden');
+  errorMsg.innerText = '';
+
+}
+
+
+let inputs = document.querySelectorAll('input');
+let errorSubmit = document.querySelector('.error-submit');
+
 document.querySelector(".fila > button").addEventListener("click", (e) => {
   e.preventDefault();
 
-  addBook();
 
-  reloadLibrary();
+  if( Array.from(inputs).some((e) => !e.validity.valid)) {
+    console.log('No valido uwunt');
+    // errorSubmit.classList.remove('hidden');
+
+    for(let input of inputs){
+
+      if(!input.validity.valid){
+        showErrorMessage(input);
+      }
+
+    }
+
+  }else{
+
+    // errorSubmit.classList.add('hidden');
+    addBook();
+    reloadLibrary();
+  }
+
 });
+
+
+
+inputs.forEach((inp) => {
+  inp.addEventListener('input',(e) => {
+    let tar = e.currentTarget;
+    if(tar.type === 'checkbox') return;
+    if(!tar.validity.valid){
+        showErrorMessage(tar);
+    } else
+      clearErrorMessage(tar);
+  })
+})
+
+
+
 
 reloadLibrary();
